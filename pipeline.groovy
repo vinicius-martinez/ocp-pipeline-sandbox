@@ -1,16 +1,12 @@
 pipeline {
-
-  agent {
-    node {
-      label 'nodejs'
-    }
-  }
+  agent none
 
   options {
     // set a timeout of 20 minutes for this pipeline
     timeout(time: 20, unit: 'MINUTES')
+    skipDefaultCheckout()
   }
-  
+
   stages{
     stage ('Cluster Test'){
       steps {
