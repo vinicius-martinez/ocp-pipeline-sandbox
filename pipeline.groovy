@@ -35,7 +35,8 @@ pipeline {
        script {
         def booleanInput = input(
         id: 'Proceed1', message: 'Was this successful?',
-        parameters: [[$class: 'BooleanParameterDefinition', defaultValue: true, description: 'Simple Boolean ChoiceParameterDefinition', name: 'Please confirm you agree with this']
+        parameters: [[$class: 'BooleanParameterDefinition', defaultValue: true,
+          description: 'Simple Boolean ChoiceParameterDefinition', name: 'Please confirm you agree with this']
         ])
         println "Value from choiceInput ${booleanInput}";
       }
