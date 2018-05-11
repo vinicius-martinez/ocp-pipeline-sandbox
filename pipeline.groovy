@@ -70,6 +70,19 @@ pipeline {
     }
   }
 
+  stage ('FileParameterDefinition Test') {
+    steps {
+      script {
+        def fileInput = input(
+          id: 'fileInput', message: 'Select a File',
+            parameters: [[$class: 'FileParameterDefinition',
+              description: 'Select a File', name: 'Select a File']
+        ])
+        println "Value from fileInput: ${fileInput}"
+      }
+    }
+  }
+
 } //end Stages
 
 }
