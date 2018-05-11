@@ -22,7 +22,7 @@ pipeline {
       steps {
         script {
           def choiceInput = input(
-            id: 'userInput', message: 'Merge to?',
+            id: 'choiceInput', message: 'Merge to?',
               parameters: [[$class: 'ChoiceParameterDefinition', defaultValue: 'strDef',
               description:'describing choices', name:'nameChoice', choices: "QA\nUAT\nProduction\nDevelop\nMaster"]
           ])
@@ -35,7 +35,7 @@ pipeline {
      steps {
        script {
         def booleanInput = input(
-          id: 'Proceed1', message: 'Was this successful?',
+          id: 'booleanInput', message: 'Was this successful?',
             parameters: [[$class: 'BooleanParameterDefinition', defaultValue: true,
               description: 'Simple Boolean ChoiceParameterDefinition', name: 'Please confirm you agree with this']
         ])
@@ -53,6 +53,19 @@ pipeline {
               description: '.....', name: 'LIB_TEST')]
         )
         println "Value from stringInput: ${stringInput}"
+      }
+    }
+  }
+
+  stage ('PasswordParameterDefinition Test') {
+    steps {
+      script {
+        def passwordInput = input(
+          id: 'passwordInput', message: 'Was this successful?',
+            parameters: [[$class: 'PasswordParameterDefinition', defaultValue: 'somerandompassword',
+              description: 'Enter a Password', name: 'PasswordParameterDefinition']
+        ])
+        println "Value from passwordInput: ${passwordInput}"
       }
     }
   }
