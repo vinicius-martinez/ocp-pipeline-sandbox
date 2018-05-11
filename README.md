@@ -1,6 +1,30 @@
 # Openshift Jenkins Pipeline Showcase
+The following project was created to showcase some of the Jenkins features provided by [Openshift](https://www.openshift.com/).
 
-## The following project was created to showcase some of the Openshift Jenkins integration.
+**Contributions and suggestions are much appreciated!**
+
+## Deploy on OpenShift
+
+In order to deploy this pipeline, please execute the following steps:
+
+1. Logging in your current Openshift instance, [Minishift](https://github.com/minishift/minishift), [Openshift all-in-one](https://github.com/openshift/origin/blob/master/docs/cluster_up_down.md) or [CDK](https://developers.redhat.com/products/cdk/overview/)
+2. Create a Project (namespace if you're familiar with Kubernetes)
+3. After creating your project, select "Add to Project > Import YAML / JSON" and import the following snippet:
+kind: "BuildConfig"
+apiVersion: "v1"
+metadata:
+  name: "sample-pipeline"
+spec:
+  source:
+    type: "Git"
+    git:
+      uri: "https://github.com/vinicius-martinez/ocp-pipeline-sandbox"
+  strategy:
+    type: "JenkinsPipeline"
+    jenkinsPipelineStrategy:
+      jenkinsfilePath: "pipeline.groovy"
+
+## Oficial References
 
 For additional details about Openshift & Jenkins integration, please refer to:
 
