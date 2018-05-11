@@ -19,12 +19,14 @@ pipeline {
     }
 
     stage ('Boolean Test') {
+      steps {
         booleanUserInput = input(
         id: 'Proceed1', message: 'Was this successful?', parameters: [
           [$class: 'BooleanParameterDefinition',
           defaultValue: true, description: '',
           name: 'Please confirm you agree with this']])
-      echo "booleanUserInput is: " + ${booleanUserInput}
+          echo "booleanUserInput is: " + ${booleanUserInput}
+      }
     }
 
   } //end Stages
