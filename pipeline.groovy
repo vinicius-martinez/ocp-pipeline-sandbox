@@ -19,12 +19,17 @@ pipeline {
     }
 
     stage ('Input Test') {
-      def userPasswordInput = input(
-      id: 'userPasswordInput', message: 'your password', parameters: [
-          [$class: 'TextParameterDefinition', defaultValue='mb', description: 'vbn', name: 'password']])
-      echo ("Password was: " + userPasswordInput)
-    }
+      steps {
+        script {
+          def userInput = input(id: 'userInput', message: 'Merge to?',
+          parameters: [[$class: 'ChoiceParameterDefinition', defaultValue: 'strDef',
+             description:'describing choices', name:'nameChoice', choices: "QA\nUAT\nProduction\nDevelop\nMaster"]
+          ])
+         println(userInput);
+       }
+     }
+   }
 
-  } //end Stages
+ } //end Stages
 
 }
