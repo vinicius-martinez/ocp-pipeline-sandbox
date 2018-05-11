@@ -18,15 +18,11 @@ pipeline {
       }
     }
 
-    stage ('Boolean Test') {
-      steps {
-        booleanUserInput = input(
-        id: 'Proceed1', message: 'Was this successful?', parameters: [
-          [$class: 'BooleanParameterDefinition',
-          defaultValue: true, description: '',
-          name: 'Please confirm you agree with this']])
-          echo "booleanUserInput is: " + ${booleanUserInput}
-      }
+    stage ('Input Test') {
+      def userPasswordInput = input(
+      id: 'userPasswordInput', message: 'your password', parameters: [
+          [$class: 'TextParameterDefinition', defaultValue='mb', description: 'vbn', name: 'password']])
+      echo ("Password was: " + userPasswordInput)
     }
 
   } //end Stages
