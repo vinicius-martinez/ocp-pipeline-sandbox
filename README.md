@@ -1,5 +1,6 @@
 # Openshift Jenkins Pipeline Showcase
-The following project was created to showcase some of the Openshift Jenkins features.
+
+The following project was created to showcase some Jenkins features provided by [Openshift](https://www.openshift.com/)
 
 **Contributions and suggestions are much appreciated!**
 
