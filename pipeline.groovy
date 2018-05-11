@@ -21,28 +21,42 @@ pipeline {
     stage ('ChoiceParameterDefinition Test') {
       steps {
         script {
-          def choiceInput = input(id: 'userInput', message: 'Merge to?',
-          parameters: [[$class: 'ChoiceParameterDefinition', defaultValue: 'strDef',
-             description:'describing choices', name:'nameChoice', choices: "QA\nUAT\nProduction\nDevelop\nMaster"]
+          def choiceInput = input(
+            id: 'userInput', message: 'Merge to?',
+              parameters: [[$class: 'ChoiceParameterDefinition', defaultValue: 'strDef',
+              description:'describing choices', name:'nameChoice', choices: "QA\nUAT\nProduction\nDevelop\nMaster"]
           ])
-         println "Value from choiceInput ${choiceInput}";
+          println "Value from choiceInput: ${choiceInput}"
        }
      }
    }
 
-   stage ('ChoiceParameterDefinition Test') {
+   stage ('BooleanParameterDefinition Test') {
      steps {
        script {
         def booleanInput = input(
-        id: 'Proceed1', message: 'Was this successful?',
-        parameters: [[$class: 'BooleanParameterDefinition', defaultValue: true,
-          description: 'Simple Boolean ChoiceParameterDefinition', name: 'Please confirm you agree with this']
+          id: 'Proceed1', message: 'Was this successful?',
+            parameters: [[$class: 'BooleanParameterDefinition', defaultValue: true,
+              description: 'Simple Boolean ChoiceParameterDefinition', name: 'Please confirm you agree with this']
         ])
-        println "Value from choiceInput ${booleanInput}";
+        println "Value from booleanInput: ${booleanInput}"
       }
     }
   }
 
- } //end Stages
+  stage ('StringInput Test') {
+    steps {
+      script {
+        def stringInput = input(
+          id: 'stringInput', message: 'input your text: ', ok: 'ok',
+            parameters: [string(defaultValue: 'some text',
+              description: '.....', name: 'LIB_TEST')]
+        )
+        println "Value from stringInput: ${stringInput}"
+      }
+    }
+  }
+
+} //end Stages
 
 }
