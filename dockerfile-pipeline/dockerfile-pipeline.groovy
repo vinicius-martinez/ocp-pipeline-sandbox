@@ -52,6 +52,7 @@ pipeline {
 
     stage ('Expose App'){
       steps {
+        echo sh(returnStdout: true, script: 'oc get svc dockerfile-php')
         sh "oc expose svc dockerfile-php"
       }
     }
