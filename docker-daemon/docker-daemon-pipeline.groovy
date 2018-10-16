@@ -26,6 +26,14 @@ pipeline {
       }
     }
 
+    stage ('Access Docker Daemon'){
+      steps {
+        script {
+          echo sh(returnStdout: true, script: 'docker version')
+        }
+      }
+    }
+
   }
 
 }
