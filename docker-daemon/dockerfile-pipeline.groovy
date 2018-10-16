@@ -29,6 +29,7 @@ pipeline {
     stage ('Cleanup'){
       steps {
         script {
+          echo 'Cleaning Application resources' 
           sh "oc delete bc,dc,svc,route -l app=dockerfile-php"
         }
       }
