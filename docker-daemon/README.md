@@ -19,5 +19,5 @@ spec:
   strategy:
     type: "JenkinsPipeline"
     jenkinsPipelineStrategy:
-      jenkinsfilePath: "docker-daemin/docker-daemon-pipeline"
+      jenkinsfilePath: "docker-daemon/docker-daemon-pipeline.groovy"
 ```

@@ -19,12 +19,11 @@ pipeline {
     }
 
     stage ('Print Env Vars'){
-      echo sh(returnStdout: true, script: 'env')
+      steps {
+        script {
+          echo sh(returnStdout: true, script: 'env')
+        }
+      }
     }
-
-    stage ('Acessing Docker Daemon') {
-      echo sh(returnStdout: true, script: 'docker version')
-    }
-  }
 
 }
