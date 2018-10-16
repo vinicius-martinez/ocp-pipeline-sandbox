@@ -10,14 +10,15 @@ In order to deploy this pipeline, please execute the following steps:
 kind: "BuildConfig"
 apiVersion: "v1"
 metadata:
-  name: "sample-pipeline"
+  name: "dockerfile-pipeline"
 spec:
   source:
     type: "Git"
     git:
       uri: "https://github.com/vinicius-martinez/ocp-pipeline-sandbox"
+    contextDir: "dockerfile-pipeline"
   strategy:
     type: "JenkinsPipeline"
     jenkinsPipelineStrategy:
-      jenkinsfilePath: "docker-daemon/docker-daemon-pipeline.groovy"
+      jenkinsfilePath: "dockerfile-pipeline.groovy"
 ```
