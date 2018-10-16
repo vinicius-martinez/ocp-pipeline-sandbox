@@ -1,5 +1,5 @@
 pipeline {
-  agent none
+  agent { label 'maven'}
 
   options {
     timeout(time: 20, unit: 'MINUTES')
