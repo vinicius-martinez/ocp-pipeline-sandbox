@@ -29,8 +29,8 @@ pipeline {
     stage ('Cleanup'){
       steps {
         script {
-          echo 'Cleaning Application resources' 
-          sh "oc delete bc,dc,svc,route -l app=dockerfile-php"
+          echo 'Cleaning Application resources'
+          sh "oc delete all -l app=dockerfile-php"
         }
       }
     }
@@ -46,7 +46,7 @@ pipeline {
 
     stage ('Build App'){
       steps {
-        sh "oc new-app . --name=dockerfile-php --strategy=docker"
+        sh "oc new-app . -l app=dockerfile-php --name=dockerfile-php --strategy=docker"
       }
     }
 
