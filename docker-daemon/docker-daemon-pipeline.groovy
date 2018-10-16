@@ -34,9 +34,18 @@ pipeline {
       }
     }
 
+    stage ('SCM Checkout'){
+      steps {
+        script {
+          echo 'Checking out git repository'
+          git url: 'https://github.com/vinicius-martinez/ocp-php-dockerfile.git'
+        }
+      }
+    }
+
     stage ('Build App'){
       steps {
-        sh "oc new-app --name=dockerfile-php --strategy=docker https://github.com/vinicius-martinez/ocp-php-dockerfile.git"
+        sh "oc new-app . --name=dockerfile-php --strategy=docker"
       }
     }
 
