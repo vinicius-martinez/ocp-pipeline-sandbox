@@ -50,6 +50,12 @@ pipeline {
       }
     }
 
+    stage ('Expose App'){
+      steps {
+        sh "oc expose svc dockerfile-php"
+      }
+    }
+
   }
 
 }
