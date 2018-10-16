@@ -26,11 +26,12 @@ pipeline {
       }
     }
 
-    stage ('Access Docker Daemon'){
+    stage ('Build App'){
       steps {
-        script {
-          echo sh(returnStdout: true, script: 'docker version')
-        }
+        git url: 'https://github.com/vinicius-martinez/ocp-php-dockerfile.git'
+        sh "oc new-build --name=ocp-php-dockerfile --strategy=docker -l app=ocp-php-dockerfile  || echo 'Build exists'"
+        sh "oc start-build ocp-php-dockerfile"
+        sh "oc new-app ocp-php-dockerfile"
       }
     }
 
