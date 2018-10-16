@@ -26,12 +26,17 @@ pipeline {
       }
     }
 
+    stage ('Cleanup'){
+      steps {
+        script {
+          sh "oc delete bc,dc,svc,route -l app=dockerfile-php"
+        }
+      }
+    }
+
     stage ('Build App'){
       steps {
-        git url: 'https://github.com/vinicius-martinez/ocp-php-dockerfile.git'
-        sh "oc new-build --name=ocp-php-dockerfile --strategy=docker -l app=ocp-php-dockerfile  || echo 'Build exists'"
-        sh "oc start-build ocp-php-dockerfile"
-        sh "oc new-app ocp-php-dockerfile"
+        sh "oc new-app --name=dockerfile-php --strategy=docker https://github.com/vinicius-martinez/ocp-php-dockerfile.git"
       }
     }
 
