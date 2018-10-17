@@ -18,7 +18,10 @@ spec:
       uri: "https://github.com/vinicius-martinez/ocp-pipeline-sandbox"
     contextDir: "dockerfile-pipeline"
   strategy:
-    type: "JenkinsPipeline"
     jenkinsPipelineStrategy:
-      jenkinsfilePath: "dockerfile-pipeline.groovy"
+      env:
+      - name: SAMPLE_VAR
+        value: "Sample Var Test"
+      jenkinsfilePath: dockerfile-pipeline.groovy
+    type: JenkinsPipeline
 ```
